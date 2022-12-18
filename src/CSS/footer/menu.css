@@ -1,0 +1,85 @@
+footer .footer-section .all-options {
+    position: absolute;
+    background-color: white;
+    bottom: 10vh;
+    width: 23%;
+    height: 80vh;
+    right: 20px;
+    border-radius: 10px;
+    display: block;
+    visibility: hidden;
+}
+
+ul, li {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+
+.all-options li {
+    position: inherit;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    color: black;
+    opacity: 0;
+    z-index: -1;
+}
+
+.all-options li:target {
+    opacity: 1;
+    z-index: 1;
+}
+
+.all-options li section {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    flex-direction: column;
+}
+
+footer .options-right {
+    width: 12vw;
+}
+
+footer .options-right .option-active {
+    color: rgb(0, 140, 255);
+}
+
+.all-options section {
+    padding-bottom: 10px;
+}
+
+.all-options .contenido {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.all-options .contenido h4 {
+    margin: 0px;
+    text-align: start;
+    color: gray;
+}
+
+.all-options .contenido h4, .all-options .contenido button, .all-options .contenido p {
+    width: 90%;
+}
+
+.all-options .contenido button {
+    color: rgb(0, 140, 255);
+    height: 5vh;
+    border: none;
+    background-color: transparent;
+}
+
+.all-options .contenido button:hover {
+    color: rgb(0, 60, 255);
+}
+
+.all-options section h3 {
+    text-align: center;
+}

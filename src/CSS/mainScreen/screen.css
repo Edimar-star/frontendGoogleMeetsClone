@@ -1,0 +1,70 @@
+.screen {
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 32%;
+    height: 47%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+ul, li {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+
+.screen ul {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: block;
+}
+
+.screen ul li {
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    opacity: 0;
+}
+
+.screen ul .default-video, .screen .default-video span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.screen ul .video-active {
+    opacity: 1;
+}
+
+.screen ul .default-video span {
+    margin-top: 5%;
+    width: 40%;
+    height: 75%;
+    border-radius: 100px;
+    font-size: 10vh;
+}
+
+.screen ul li video {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.screen section {
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
+.screen section svg {
+    width: 10%;
+    opacity: 0;
+}
+
+.screen section p {
+    width: 90%;
+    text-align: center;
+    margin-right: 5%;
+}

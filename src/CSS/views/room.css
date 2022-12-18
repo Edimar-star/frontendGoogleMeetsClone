@@ -1,0 +1,111 @@
+nav {
+    height: 50px;
+    padding: 10px;
+}
+
+nav > a {
+    display: flex;
+    align-items: center;
+    font-size: 25px;
+    text-decoration: none;
+}
+
+nav a span {
+    margin-left: 2px;
+    margin-bottom: 3px;
+    color: gray;
+}
+
+.room-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: 85vh;
+}
+
+.room-section .camera-options {
+    width: 55vw;
+    height: 70vh;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.room-section .camera-options video {
+    width: 100%;
+    height: 90%;
+    border-radius: 10px;
+    background-color: black;
+    margin-bottom: 10px;
+}
+
+.room-section .camera-options button {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    margin-bottom: 30px;
+    background-color: red;
+    border: none;
+}
+
+.room-section .camera-options .btn-video {
+    margin-left: 60px;
+}
+
+.room-section .camera-options .btn-audio {
+    margin-right: 60px;
+}
+
+.values {
+    width: 30vw;
+    height: 40vh;
+}
+
+.values form {
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.values form h3 {
+    font-size: 35px;
+    text-align: center;
+    font-weight: normal;
+    margin-bottom: 15px;
+}
+
+.values form input {
+    margin-bottom: 10px;
+    height: 6vh;
+    width: 100%;
+    font-size: 2.5vh;
+    border-radius: 5px;
+    border: 1px solid gray;
+}
+
+.values form input:focus {
+    border: 2px solid rgb(0, 140, 255);
+    outline: none;
+}
+
+.values form button {
+    background-color: rgb(0, 140, 255);
+    border: none;
+    border-radius: 10px;
+    height: 5vh;
+    width: 50%;
+    color: white;
+    cursor: pointer;
+}
+
+@media (max-width: 900px) {
+    .room-section {
+        flex-direction: column;
+    }
+    .room-section .values {
+        width: 80vw;
+    }
+}

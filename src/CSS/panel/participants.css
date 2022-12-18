@@ -1,0 +1,87 @@
+#participants {
+    display: flex;
+    align-items: center;
+}
+
+#participants section {
+    height: 25vh;
+    width: 80%;
+}
+
+#participants section form {
+    width: 100%;
+    height: 6vh;
+}
+
+#participants section input {
+    margin-top: 10px;
+    height: 6.5vh;
+    border-radius: 5px;
+    border: 1px solid gray;
+    outline: none;
+}
+
+#participants section input:focus {
+    border: 2px solid rgb(0, 140, 255);
+}
+
+#participants section form button {
+    background-color: transparent;
+    width: 100%;
+    border-radius: 10px;
+    border: none;
+    height: 100%;
+    cursor: pointer;
+    pointer-events: all;
+    text-align: start;
+    color: gray;
+}
+
+#participants section form button:hover {
+    color: black;
+}
+
+#participants section h4 {
+    margin: 0px;
+    margin-top: 10px;
+    color: gray;
+    font-weight: normal;
+}
+
+#participants .contenido div {
+    height: 50px;
+    width: 80%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+#participants .contenido div span, #participants .contenido div {
+    display: flex;
+    align-items: center;
+}
+
+#participants .contenido div span {
+    width: 18%;
+    height: 40px;
+    justify-content: center;
+    border-radius: 40px;
+    margin-right: 20px;
+}
+
+#participants .contenido div section {
+    width: 80%;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#participants .contenido div section p {
+    width: 80%;
+}
+
+#participants .contenido div section svg {
+    width: 20%;
+    color: gray;
+}

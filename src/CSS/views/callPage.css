@@ -1,0 +1,47 @@
+body {
+    padding: 0px;
+    margin: 0px;
+}
+
+.call-div {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.87);
+}
+
+footer {
+    height: 10vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px;
+}
+
+footer .footer-section {
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color: white;
+}
+
+footer .footer-section a {
+    width: 50px;
+    height: 50px;
+    border-radius: 100px;
+    border: none;
+    font-size: 20px;
+    background-color: transparent;
+}
+
+footer .footer-section a:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+footer .footer-section a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

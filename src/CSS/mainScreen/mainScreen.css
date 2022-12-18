@@ -1,0 +1,62 @@
+.main-screen {
+    height: 90vh;
+    width: 100%;
+}
+
+.main-screen-collapse {
+    width: 75%;
+}
+
+.main-screen, .main-screen-collapse {
+    display: block;
+}
+
+.main-screen li {
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    opacity: 0;
+}
+
+.main-screen .screens {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    opacity: 1;
+}
+
+.main-screen .video-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-screen .video-screen video {
+    width: 90%;
+    height: 90%;
+}
+
+#notificacion-peer {
+    position: fixed;
+    bottom: 28px;
+    left: 30px;
+    background-color: white;
+    width: 300px;
+    height: 50px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 10px;
+}
+
+#notificacion-peer span {
+    height: 80%;
+    width: 40px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 40px;
+}

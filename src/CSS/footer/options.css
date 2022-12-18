@@ -1,0 +1,16 @@
+footer .footer-section {
+    width: 20vw;
+}
+
+footer .footer-section a {
+    color: white;
+}
+
+footer .footer-section .option-active {
+    color: rgb(0, 140, 255);
+}
+
+footer .footer-section .option-inactive {
+    background-color: red;
+    color: white;
+}

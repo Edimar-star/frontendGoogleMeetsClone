@@ -1,0 +1,48 @@
+.modal {
+    position: absolute;
+    background-color: white;
+    left: 30px;
+    bottom: 14vh;
+    height: 47vh;
+    width: 26.6vw;
+    border-radius: 10px;
+    padding: 25px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.modal h3 {
+    font-weight: normal;
+}
+
+.modal section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal section button {
+    border: none;
+    background-color: transparent;
+    font-size: 20px;
+}
+
+.modal .add-people {
+    color: white;
+    padding: 15px;
+    border: none;
+    background-color: rgb(0, 140, 255);
+    border-radius: 7px;
+}
+
+.modal section p {
+    margin-left: 10px;
+}
+
+.modal p {
+    color: gray;
+}
