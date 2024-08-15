@@ -7,13 +7,13 @@ const HomePage = () => {
     return (
         <>
             <nav>
-                <a href="/"><img src={logo} /> <span>Meet</span></a>
+                <a href="/"><img src={logo} alt="" /> <span>Meet</span></a>
             </nav>
 
             <main>
                 <CreateRoom />
                 <div className="container container-img">
-                    <img src={fondo} />
+                    <img src={fondo} alt="" />
                     <section>
                         <h2>Obtén un vinculo para compartir</h2>
                         <p>Haz clic en <b>Nueva reunión </b>

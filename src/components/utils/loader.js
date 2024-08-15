@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { useState, useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import swal from 'sweetalert2'
 import '../../CSS/utils/loader.css'
 
@@ -21,7 +21,7 @@ const Loader = () => {
         return () => {
             clearInterval(interval);
         }
-    }, [timeInterval])
+    }, [timeInterval, navigate])
 
     return (
         <div className='loader'>

@@ -134,7 +134,7 @@ const RoomPage = () => {
         return () => {
             s.disconnect();
         }
-    }, []);
+    }, [roomID]);
 
     // Validar si la llamada ya tiene un admin
     useEffect(() => {
@@ -154,7 +154,7 @@ const RoomPage = () => {
             socket.off('admin-already-exists', handler);
         }
 
-    }, [socket, user, isAdmin])
+    }, [socket, user, isAdmin, navigate, roomID])
 
     // Reunion llena
     useEffect(() => {
@@ -193,7 +193,7 @@ const RoomPage = () => {
             socket.off('room-exists', handler);
         }
 
-    }, [socket, isAdmin])
+    }, [socket, isAdmin, roomID])
 
     // Administrador da acceso a la llamada
     useEffect(() => {
@@ -237,7 +237,7 @@ const RoomPage = () => {
         return () => {
             socket.off('answer-permises', handler);
         }
-    }, [socket, isAdmin])
+    }, [socket, isAdmin, roomID])
 
     return (
         <>
@@ -265,7 +265,7 @@ const RoomPage = () => {
                         ) : (
                             <>
                                 <nav>
-                                    <a href="/"><img src={logo} /> <span>Meet</span></a>
+                                    <a href="/"><img src={logo} alt="" /> <span>Meet</span></a>
                                 </nav>
                                 <section className="room-section">
                                     <div className="camera-options">

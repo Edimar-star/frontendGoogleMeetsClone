@@ -83,7 +83,7 @@ const Options = ({ temp, update }) => {
         if (optionsCall.microphone === '') options.microphone = newOptions[0] // Activo el audio
         if (optionsCall.video === '') options.video = newOptions[1] // Activo el video
         update.setBtnOptions(options)
-    }, [user, isAdmin])
+    }, [user, update, isAdmin, options, options.microphone, options.video, optionsCall.microphone, optionsCall.video])
 
     useEffect(() => {
         if (socket == null || users.length === 0) return
@@ -97,14 +97,14 @@ const Options = ({ temp, update }) => {
         return () => {
             socket.off('raise-lower-hand', handler)
         }
-    }, [socket, users])
+    }, [socket, users, update])
 
     return (
         <div className='footer-section'>
             {Object.keys(options).map((option, index) => {
                 const key = `${option}-${options[option][3]}`
                 return (
-                    <a id={option} onClick={() => {
+                    <button id={option} onClick={() => {
                         const data = [options[option][1], options[option][0], options[option][3], options[option][2]]
                         const newOptions = Object.keys(options)
                                 .map(op => [op, options[op]])
@@ -113,7 +113,7 @@ const Options = ({ temp, update }) => {
                         functionOptions[key]()
                     }} className={options[option][2]} key={index}>
                         <FontAwesomeIcon icon={`fa-solid fa-${options[option][0]}`} />
-                    </a>
+                    </button>
                 )
             })}
         </div>

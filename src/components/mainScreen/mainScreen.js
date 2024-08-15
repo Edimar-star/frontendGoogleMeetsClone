@@ -1,6 +1,6 @@
 import Screen from './screen'
 import '../../CSS/mainScreen/mainScreen.css'
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import Peer from "simple-peer";
 
 const MainScreen = ({ temp, update }) => {
@@ -19,7 +19,7 @@ const MainScreen = ({ temp, update }) => {
     const [btnOptions, setBtnOptions] = useState(temp.btnOptions)
     const [streamScreen, setStreamScreen] = useState()
 
-    const createPeer = (stream, u) => {
+    const createPeer = useCallback((stream, u) => {
         const tempStream = stream == null ? new MediaStream() : stream
         const peer = new Peer({ initiator: true, trickle: false, stream: tempStream });
 
@@ -28,9 +28,9 @@ const MainScreen = ({ temp, update }) => {
         })
 
         return peer
-    }
+    }, [user, socket])
 
-    const addPeer = (data, stream) => {
+    const addPeer = useCallback((data, stream) => {
         update.lanzarNotificacion(data.user, " acaba de entrar a la reunión")
         const tempStream = stream == null ? new MediaStream() : stream
         const peer = new Peer({ initiator: false, trickle: false, stream: tempStream })
@@ -41,9 +41,9 @@ const MainScreen = ({ temp, update }) => {
 
         peer.signal(data.signal);
         return peer
-    }
+    }, [socket, update, user])
 
-    const createPeerScreen = (stream, u) => {
+    const createPeerScreen = useCallback((stream, u) => {
         const peer = new Peer({ initiator: true, trickle: false, stream });
 
         peer.on("signal", signal => {
@@ -51,9 +51,9 @@ const MainScreen = ({ temp, update }) => {
         })
 
         return peer;
-    }
+    }, [socket, user])
 
-    const addPeerScreen = (data) => {
+    const addPeerScreen = useCallback((data) => {
         update.lanzarNotificacion(data.user, " está compartiendo pantalla")
         const peer = new Peer({ initiator: false, trickle: false })
 
@@ -72,10 +72,10 @@ const MainScreen = ({ temp, update }) => {
         })
 
         peer.signal(data.signal);
-    }
+    }, [socket, update, user])
 
     // Pido permisos para compartir pantalla
-    const shareScreen = () => {
+    const shareScreen = useCallback(() => {
         navigator.mediaDevices.getDisplayMedia({ video: true, audio: true }).then(streamObject => {
             update.lanzarNotificacion(user, " (Tú) está compartiendo pantalla")
             users.filter(u => user.id !== u.id).forEach(u => {
@@ -92,7 +92,7 @@ const MainScreen = ({ temp, update }) => {
         }).catch(() => {
             document.getElementById('screen').click()
         })
-    }
+    }, [createPeerScreen, update, user, users])
 
     const AudioVideoOptions = (key, userVideoRef) => {
         const activateStream = (isAudio, isVideo) => {
@@ -171,7 +171,7 @@ const MainScreen = ({ temp, update }) => {
         if(optionsCall.microphone === '') update.initVideo("AUDIO ACTIVADO")
         if(optionsCall.video === '') update.initVideo("VIDEO ACTIVADO")
         setContador(contador + 1)
-    }, [peersRef.current, users, optionsCall, stream, contador, isAdmin])
+    }, [users, optionsCall, stream, contador, isAdmin, update])
 
     // Obtengo los usuarios
     useEffect(() => {
@@ -189,7 +189,7 @@ const MainScreen = ({ temp, update }) => {
         return () => {
             socket.off('all-users', handler)
         }
-    }, [socket, user, stream, users])
+    }, [socket, user, stream, users, createPeer, update])
 
     // Usuario desconectado
     useEffect(() => {
@@ -226,11 +226,11 @@ const MainScreen = ({ temp, update }) => {
         return () => {
             socket.off('out-room', handler)
         } 
-    }, [socket, user, users, peersRef.current, isShareScreen, peerScreen, peersScreenRef.current])
+    }, [socket, streamScreen, update, user, users, isShareScreen, peerScreen])
 
     // Recibo una señal
     useEffect(() => {
-        if(socket == null || user == null || users.length == 0) return
+        if(socket === null || user === null || users.length === 0) return
 
         const handler = (data) => {
             const tempPeer = peersRef.current.find(p => p.user.id === data.user.id)
@@ -251,7 +251,7 @@ const MainScreen = ({ temp, update }) => {
         return () => {
             socket.off('receiving-signal', handler)
         }
-    }, [socket, user, peersRef.current, stream, users, peersScreenRef.current, isAdmin, streamScreen])
+    }, [socket, update, user, createPeerScreen, peerScreen, stream, addPeer, users, isAdmin, streamScreen])
 
     // Retorno de señal
     useEffect(() => {
@@ -266,7 +266,7 @@ const MainScreen = ({ temp, update }) => {
         return () => {
             socket.off('receiving-returned-signal', handler)
         }
-    }, [socket, peersRef.current])
+    }, [socket])
 
     // Compartir pantalla
     useEffect(() => {
@@ -294,7 +294,7 @@ const MainScreen = ({ temp, update }) => {
         return () => {
             screen.removeEventListener('click', handler)
         }
-    }, [btnOptions, streamScreen, peersScreenRef.current, user, users])
+    }, [socket, update, btnOptions, streamScreen, shareScreen, user, users])
 
     // Alguien comparte pantalla
     useEffect(() => {
@@ -306,7 +306,7 @@ const MainScreen = ({ temp, update }) => {
         return () => {
             socket.off('on-screen', handler)
         }
-    }, [socket, user])
+    }, [socket, user, addPeerScreen])
 
     // Recibo las signals de todos los usuarios
     useEffect(() => {
@@ -321,7 +321,7 @@ const MainScreen = ({ temp, update }) => {
         return () => {
             socket.off('receiving-returning-signalScreen', handler)
         }
-    }, [socket, peersScreenRef.current])
+    }, [socket])
 
     // Dejar de mostrar la pantalla compartida
     useEffect(() => {
@@ -343,7 +343,7 @@ const MainScreen = ({ temp, update }) => {
         return () => {
             socket.off('off-screen', handler)
         }
-    }, [socket, peerScreen, streamScreen, videoScreen.current])
+    }, [socket, update, peerScreen, streamScreen])
 
     return (
         <ul className='main-screen'>

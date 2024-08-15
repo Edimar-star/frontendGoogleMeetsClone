@@ -78,7 +78,7 @@ hr{
     font-weight: normal;
     display: flex;
     align-items: center;
-    justify-content: start;
+    justify-content: flex-start;
     flex-direction: row-reverse;
     background-color: white;
 }

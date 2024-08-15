@@ -83,7 +83,7 @@ const Screen = ({ temp, update }) => {
         return () => {
             document.getElementById('microphone').removeEventListener('click', handler)
         }
-    }, [stream, btnOptions, socket, peersRef.current, videoRef.current])
+    }, [stream, btnOptions, socket, update])
 
     // Activo el video
     useEffect(() => {
@@ -98,7 +98,7 @@ const Screen = ({ temp, update }) => {
         return () => {
             document.getElementById('video').removeEventListener('click', handler)
         }
-    }, [stream, btnOptions, socket, peersRef.current, videoRef.current])
+    }, [stream, btnOptions, socket, update])
 
     // Desactivo el audio de un usuario remoto
     useEffect(() => {

@@ -27,7 +27,7 @@ const OutRoom = ({ temp }) => {
         return () => {
             clearInterval(interval);
         }
-    }, [timeInterval])
+    }, [timeInterval, navigate])
 
     return (
         <div className='outroom'>
